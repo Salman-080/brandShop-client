@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, NavLink, useLoaderData } from "react-router-dom";
 
 const Categories = () => {
     const categoryDatas=useLoaderData();
@@ -14,7 +14,7 @@ const Categories = () => {
                   <h2 className="card-title">{categoryData.productName}</h2>
                   <p>{categoryData.price}</p>
                   <div className="card-actions justify-end">
-                    <button className="btn btn-primary">View Details</button>
+                    <NavLink><button to={`/cateogory/${categoryData.productName}`} className="btn btn-primary">View Details</button></NavLink>
                   </div>
                 </div>
               </div>)

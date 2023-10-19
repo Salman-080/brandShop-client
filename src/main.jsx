@@ -10,6 +10,7 @@ import Root from './Root/Root.jsx';
 import Home from './Pages/Home/Home.jsx';
 import Categories from './Pages/Categories/Categories';
 import AddProduct from './Pages/AddProduct/AddProduct';
+import ProductsPage from './Pages/ProductsPage/ProductsPage';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/addProduct",
         element: <AddProduct></AddProduct>
+      },
+      {
+        path: "/category/:productName",
+        element: <ProductsPage></ProductsPage>
       },
     ]
   },
