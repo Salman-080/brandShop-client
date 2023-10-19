@@ -38,7 +38,7 @@ const AddProduct = () => {
         <div className="max-w-screen-xl mx-auto mt-12">
             <form onSubmit={handleAddProduct} className="bg-gray-400 p-16 rounded-xl">
                 <div className="grid grid-cols-3 gap-7 ">
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productName" id="" />
+                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productName" placeholder="Product Name" id="" />
                     <select name="brandName" className="select select-bordered w-full max-w-xs">
                     <option disabled selected>Brand Name</option>
                         {
@@ -46,11 +46,11 @@ const AddProduct = () => {
                         }
                        
                     </select>
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productType" id="" />
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="price" id="" />
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="shortDescription" id="" />
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="rating" id="" />
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="image" id="" />
+                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productType" placeholder="Type" id="" />
+                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="price" placeholder="Price" id="" />
+                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="shortDescription" placeholder="Short Description" id="" />
+                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="rating" placeholder="Rating" id="" />
+                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="image" placeholder="Image Url" id="" />
 
 
                 </div>
