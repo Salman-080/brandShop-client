@@ -1,8 +1,8 @@
-import { Link, NavLink, useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 
 const Categories = () => {
     const categoryDatas=useLoaderData();
-    // console.log(categoryDatas)
+    console.log(categoryDatas)
     
     
     return (
@@ -14,7 +14,7 @@ const Categories = () => {
                   <h2 className="card-title">{categoryData.productName}</h2>
                   <p>{categoryData.price}</p>
                   <div className="card-actions justify-end">
-                    <NavLink><button to={`/cateogory/${categoryData._id}`} className="btn btn-primary">View Details</button></NavLink>
+                    <NavLink to={`/product/${categoryData._id}`}><button  className="btn btn-primary">View Details</button></NavLink>
                   </div>
                 </div>
               </div>)
