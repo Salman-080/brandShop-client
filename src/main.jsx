@@ -11,6 +11,7 @@ import Home from './Pages/Home/Home.jsx';
 import Categories from './Pages/Categories/Categories';
 import AddProduct from './Pages/AddProduct/AddProduct';
 import ProductsPage from './Pages/ProductsPage/ProductsPage';
+import Cart from './Pages/Cart/Cart';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
         element: <ProductsPage></ProductsPage>,
         loader: ({params})=>fetch(`http://localhost:5000/${params.productId}`)
         
+      },
+      {
+        path: "/cart",
+        element: <Cart></Cart>,
+        loader: ()=> fetch("http://localhost:5000/product/cart")
       },
     ]
   },

@@ -2,6 +2,19 @@ import { useLoaderData } from "react-router-dom";
 
 const ProductsPage = () => {
     const productData = useLoaderData();
+    console.log(productData)
+
+    const handleAddToCart=()=>{
+        fetch("http://localhost:5000/product/cart",{
+            method: "POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(productData)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+    }
 
     return (
         <div className="max-w-screen-xl mx-auto mt-7">
@@ -17,7 +30,7 @@ const ProductsPage = () => {
                
 
                 <div className="card-actions mt-3">
-                    <button className="btn btn-primary">Add To Cart</button>
+                    <button onClick={handleAddToCart} className="btn btn-primary">Add To Cart</button>
                 </div>
             </div>
 
