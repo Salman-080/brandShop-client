@@ -1,8 +1,38 @@
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const Cart = () => {
-    const cartDatas = useLoaderData();
+    const loadedData = useLoaderData();
+    console.log(loadedData)
+    const [cartDatas,setCartDatas]=useState([]);
+    
+
+    useEffect(()=>{
+        setCartDatas(loadedData);
+    },[])
     console.log(cartDatas)
+
+    const handleDeleteCart=(id)=>{
+console.log(id)
+        fetch(`http://localhost:5000/product/cart/${id}`,{
+            method:"DELETE"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+
+            const remainingProduct= cartDatas.filter(cData=> cData._id!==id);
+            console.log(remainingProduct)
+            setCartDatas(remainingProduct);
+
+        })
+
+
+        
+
+    }
+
+
     return (
         <div className="max-w-screen-xl mx-auto flex flex-col gap-4">
             {
@@ -20,7 +50,7 @@ const Cart = () => {
                                 <h2 className="text-lg">{cartData.brandName}</h2>
                                 <h2 className="text-sm text-gray-500">{cartData.productType}</h2>
 
-                                <button className="btn btn-error">Remove</button>
+                                <button onClick={()=>handleDeleteCart(cartData._id)} className="btn btn-error">Remove</button>
 
 
 
