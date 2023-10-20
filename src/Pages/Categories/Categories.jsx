@@ -1,4 +1,4 @@
-import { NavLink, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Categories = () => {
     const categoryDatas = useLoaderData();
@@ -23,9 +23,9 @@ const Categories = () => {
 
                             </div>
                             <div className="flex justify-between mb-2 mt-4 px-4">
-                                <NavLink to={`/product/${categoryData._id}`}><button className="btn btn-primary">View Details</button></NavLink>
+                                <Link to={`/product/${categoryData._id}`}><button className="btn btn-primary">View Details</button></Link>
 
-                                <button className="btn btn-secondary ">Update</button>
+                               <Link to={`/update/${categoryData._id}`}><button className="btn btn-secondary ">Update</button></Link>
                             </div>
                        
                     </div>)

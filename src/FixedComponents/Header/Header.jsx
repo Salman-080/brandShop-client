@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = ({handleTheme}) => {
 
     const navLinks=<>
     
@@ -34,6 +34,7 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 <a className="btn">Button</a>
+                
             </div>
         </div>
     );
