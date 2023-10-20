@@ -1,9 +1,13 @@
 import { useLoaderData } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { FaStar } from 'react-icons/fa';
+import { AiOutlineStar } from 'react-icons/ai';
+
 
 const ProductsPage = () => {
     const productData = useLoaderData();
     console.log(productData)
+    const array=[0,1,2,3,4];
 
     const handleAddToCart=()=>{
         fetch("http://localhost:5000/product/cart",{
@@ -39,7 +43,17 @@ const ProductsPage = () => {
                 <p><span className="text-lg font-semibold">Brand: </span> <span>{productData.brandName}</span></p>
                 <p><span className="text-lg font-semibold">Type: </span> <span>{productData.productType}</span></p>
                 <p><span className="text-lg font-semibold">Description: </span> <span>{productData.shortDescription}</span></p>
-                <p><span className="text-lg font-semibold">Rating: </span> <span>{productData.rating}</span></p>
+
+
+                <p><span className="text-lg font-semibold">Rating: </span> <span>
+                    
+                    {
+                        array.map((a,idx)=> a+1 <= productData.rating ? <div key={idx}> <FaStar></FaStar></div>  :  <div key={idx+1}><AiOutlineStar></AiOutlineStar></div> )
+                    }
+                    </span></p>
+
+
+
                 <p><span className="text-lg font-semibold">Price: </span> <span>{productData.rating}</span></p>
                
 

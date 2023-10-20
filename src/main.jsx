@@ -13,6 +13,9 @@ import AddProduct from './Pages/AddProduct/AddProduct';
 import ProductsPage from './Pages/ProductsPage/ProductsPage';
 import Cart from './Pages/Cart/Cart';
 import UpdatePage from './Pages/UpdatePage/UpdatePage';
+import Provider from './AuthProvider/Provider';
+import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/category/:brandName",
         element: <Categories></Categories>,
-        loader:({params})=> fetch(`http://localhost:5000/products/${params.brandName}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brandName}`)
       },
       {
         path: "/addProduct",
@@ -35,19 +38,29 @@ const router = createBrowserRouter([
       {
         path: "/product/:productId",
         element: <ProductsPage></ProductsPage>,
-        loader: ({params})=>fetch(`http://localhost:5000/${params.productId}`)
-        
+        loader: ({ params }) => fetch(`http://localhost:5000/${params.productId}`)
+
       },
       {
         path: "/cart",
         element: <Cart></Cart>,
-        loader: ()=> fetch("http://localhost:5000/product/cart")
+        loader: () => fetch("http://localhost:5000/product/cart")
       },
       {
         path: "/update/:id",
         element: <UpdatePage></UpdatePage>,
-        loader:({params})=> fetch(`http://localhost:5000/update/${params.id}`)
-       
+        loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`)
+
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+
       },
     ]
   },
@@ -55,6 +68,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router} />
+    <Provider>
+      <RouterProvider router={router} />
+    </Provider>
+
   </React.StrictMode>,
 )
