@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/Provider";
+import './Header.css';
 
 const Header = ({ handleTheme }) => {
     const {user, loggingOut}=useContext(AuthContext);
@@ -27,7 +28,7 @@ const Header = ({ handleTheme }) => {
 
 
     const handleGoogleLogin=()=>{
-        
+
     }
 
 
@@ -50,7 +51,7 @@ const Header = ({ handleTheme }) => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="dropdown dropdown-end">
+                <div className="dropdown dropdown-end dropDown_zIndex">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             {user ? <img src={user?.photoURL ? user.photoURL : "https://i.ibb.co/4t3SVXP/man-avatar-profile-picture-vector-illustration-268834-538.jpg"} />

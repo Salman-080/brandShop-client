@@ -3,6 +3,7 @@ import Banner from "./Components/Banner";
 import BrandCategories from "./Components/BrandCategories";
 import './Home.css';
 
+
 const Home = () => {
     // const [theme,setTheme]=useState("lightTheme");
 
@@ -20,6 +21,7 @@ const Home = () => {
     // className={theme=="lightTheme"? "dark_theme": "light_theme"}
     return (
         <div >
+             
             {/* <button onClick={handleTheme}>toggle</button> */}
             <Banner></Banner>
             <BrandCategories></BrandCategories>
