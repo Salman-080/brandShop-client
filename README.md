@@ -21,6 +21,5 @@ https://brandshop-auth.web.app/
 
 - Also there is a Add product page including form, which is private route. Any product can be added by storing the product into the database.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 - Also there is a dark mode, ligth mode feature in the home page. User can toggle theme of the home page only.
