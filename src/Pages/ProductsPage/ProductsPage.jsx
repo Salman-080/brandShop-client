@@ -2,15 +2,20 @@ import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlineStar } from 'react-icons/ai';
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/Provider";
 
 
 const ProductsPage = () => {
+    const {user}=useContext(AuthContext);
+    const userEmail=user?.email;
     const productData = useLoaderData();
     console.log(productData)
     const array=[0,1,2,3,4];
 
     const handleAddToCart=()=>{
-        fetch("http://localhost:5000/product/cart",{
+        console.log(userEmail)
+        fetch(`http://localhost:5000/product/cart/${userEmail}`,{
             method: "POST",
             headers:{
                 "content-type":"application/json"

@@ -9,6 +9,7 @@ const Provider = ({children}) => {
     
     const auth= getAuth(app);
     const [user, setUser]=useState(null);
+    const [theme,setTheme]=useState("darkTheme");
 
     const createUser=(email,password)=>{
         return createUserWithEmailAndPassword(auth, email, password)
@@ -46,6 +47,17 @@ const Provider = ({children}) => {
     const loggingOut=()=>{
         return signOut(auth);
     }
+
+
+    const handleTheme=()=>{
+        if(theme=="lightTheme"){
+            setTheme("darkTheme")
+        }
+        else{
+
+            setTheme("lightTheme");
+        }
+    }
     console.log(user)
     const authInfo={
         user,
@@ -53,7 +65,14 @@ const Provider = ({children}) => {
         signIn,
         profileUpdate,
         loggingOut,
+        handleTheme,
+        theme,
     }
+
+
+
+
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

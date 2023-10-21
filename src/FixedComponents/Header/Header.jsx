@@ -3,31 +3,32 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/Provider";
 import './Header.css';
 
-const Header = ({ handleTheme }) => {
-    const {user, loggingOut}=useContext(AuthContext);
+const Header = () => {
+    const { user, loggingOut, handleTheme, theme } = useContext(AuthContext);
+    const userEmail= user?.email;
 
     const navLinks = <>
 
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/addProduct">Add Product</NavLink></li>
-        <li><NavLink to="/cart">Cart</NavLink></li>
+        <li><NavLink to={`/cart/${userEmail}`}>Cart</NavLink></li>
 
 
 
     </>
 
-    const handleLogOut=()=>{
+    const handleLogOut = () => {
         loggingOut()
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
 
-    const handleGoogleLogin=()=>{
+    const handleGoogleLogin = () => {
 
     }
 
@@ -51,6 +52,12 @@ const Header = ({ handleTheme }) => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <div className="mr-6">
+                    <button onClick={handleTheme}>{
+                        theme=="darkTheme"? <img className="w-[30px] h-[30px]" src="/toggleDark.png" alt="" /> :
+                        <img className="w-[30px] h-[30px]" src="/toggleLight.png" alt="" />
+                    }</button>
+                </div>
                 <div className="dropdown dropdown-end dropDown_zIndex">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
