@@ -30,7 +30,7 @@ const UpdatePage = () => {
             productName, brandName,productType,price,shortDescription,rating,image
         }
 
-        fetch(`http://localhost:5000/update/${loadedData._id}`,{
+        fetch(`https://brand-shop-server-ochre.vercel.app/update/${loadedData._id}`,{
             method:"PUT",
             headers: {
                 "content-type":"application/json"
@@ -54,14 +54,14 @@ const UpdatePage = () => {
     }
     return (
         <div className="max-w-screen-xl mx-auto mt-12 mb-8">
-            <form onSubmit={handleUpdateProduct} className="bg-gray-400 p-16 rounded-xl">
+            <form onSubmit={handleUpdateProduct} className="bg-orange-400 p-16 rounded-xl">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 ">
                     <div className="space-y-1">
-                        <h2>Procut Name</h2>
+                        <h2 className="text-white text-lg font-medium">Procut Name</h2>
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productName" defaultValue={loadedData.productName} id="" />
                     </div>
                     <div className="space-y-1">
-                        <h2>BrandName</h2>
+                        <h2 className="text-white text-lg font-medium">BrandName</h2>
                     <select name="brandName" className="select select-bordered w-full max-w-xs">
                         <option selected>{loadedData.brandName}</option>
                         {
@@ -71,32 +71,33 @@ const UpdatePage = () => {
                     </select>
                     </div>
                     <div className="space-y-1">
-                        <h2>Product Type</h2>
+                        <h2 className="text-white text-lg font-medium">Product Type</h2>
                         <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productType" defaultValue={loadedData.productType} id="" />
                     </div>
                     <div className="space-y-1">
-                        <h2>Price</h2>
+                        <h2 className="text-white text-lg font-medium">Price</h2>
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="price" defaultValue={loadedData.price} id="" />
                     </div>
                     <div className="space-y-1">
-                        <h2>Short Description</h2>
+                        <h2 className="text-white text-lg font-medium">Short Description</h2>
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="shortDescription" defaultValue={loadedData.shortDescription} id="" />
                     </div>
                     <div className="space-y-1">
-                        <h2>Rating</h2>
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="rating" defaultValue={loadedData.rating} id="" />
+                        <h2 className="text-white text-lg font-medium">Rating (Integer Number)</h2>
+                    <input className="input input-bordered input-md w-full max-w-xs" type="number" name="rating" defaultValue={loadedData.rating} id="" />
                     </div>
                     <div className="space-y-1">
-                        <h2>Image Url</h2>
+                        <h2 className="text-white text-lg font-medium">Image Url</h2>
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="image" defaultValue={loadedData.image} id="" />
                     </div>
+                    
 
 
                 </div>
                 <br />
                 <br />
                 <div className="text-center">
-                    <button className="btn btn-ghost">Submit</button>
+                    <button className="btn bg-orange-700 text-white border-orange-700">Submit</button>
                 </div>
 
 

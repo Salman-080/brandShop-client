@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/category/:brandName",
         element: <Categories></Categories>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.brandName}`)
+        loader: ({ params }) => fetch(`https://brand-shop-server-ochre.vercel.app/products/${params.brandName}`)
       },
       {
         path: "/addProduct",
@@ -46,20 +46,20 @@ const router = createBrowserRouter([
         element: <ProductDetailsPrivate>
            <ProductsPage></ProductsPage>
         </ProductDetailsPrivate>,
-        loader: ({ params }) => fetch(`http://localhost:5000/${params.productId}`)
+        loader: ({ params }) => fetch(`https://brand-shop-server-ochre.vercel.app/${params.productId}`)
 
       },
       {
-        path: "/cart/:userEmail",
+        path: "/cart",
         element: <CartPrivate>
           <Cart></Cart>
         </CartPrivate> ,
-        loader: ({params}) => fetch(`http://localhost:5000/product/cart/${params.userEmail}`)
+        // loader: ({params}) => fetch(`https://brand-shop-server-ochre.vercel.app/product/cart/${params.userEmail}`)
       },
       {
         path: "/update/:id",
         element: <UpdatePrivate> <UpdatePage></UpdatePage></UpdatePrivate>,
-        loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`)
+        loader: ({ params }) => fetch(`https://brand-shop-server-ochre.vercel.app/update/${params.id}`)
 
       },
       {

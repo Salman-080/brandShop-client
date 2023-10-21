@@ -6,7 +6,10 @@ const Root = () => {
     return (
         <div>
             <Header></Header>
-            <Outlet></Outlet>
+            <div className="min-h-screen md:min-h-[150vh] lg:min-h-[70vh]">
+                <Outlet></Outlet>
+            </div>
+
             <Footer></Footer>
         </div>
     );

@@ -17,7 +17,7 @@ const ProductsPage = () => {
 
     const handleAddToCart=()=>{
         console.log(userEmail)
-        fetch(`http://localhost:5000/product/cart/${userEmail}`,{
+        fetch(`https://brand-shop-server-ochre.vercel.app/product/cart/${userEmail}`,{
             method: "POST",
             headers:{
                 "content-type":"application/json"
@@ -61,11 +61,11 @@ const ProductsPage = () => {
 
 
 
-                <p><span className="text-lg font-semibold">Price: </span> <span>{productData.price}$</span></p>
+                <p><span className="text-lg font-semibold">Price: </span> <span>${productData.price}</span></p>
                
 
                 <div className="card-actions mt-3">
-                    <button onClick={handleAddToCart} className="btn btn-primary">Add To Cart</button>
+                    <button onClick={handleAddToCart} className="btn bg-orange-500 text-white">Add To Cart</button>
                 </div>
             </div>
 

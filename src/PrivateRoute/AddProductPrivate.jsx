@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 const AddProductPrivate = ({children}) => {
     const {user,loading}=useContext(AuthContext);
     if(loading){
-        return <div>Loainggggggggg</div>
+        return <div>Loading</div>
     }
 
 

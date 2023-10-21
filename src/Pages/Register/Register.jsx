@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/Provider";
+import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
     const { createUser,profileUpdate,loggingOut, googleSignIn } = useContext(AuthContext);
@@ -14,11 +15,63 @@ const Register = () => {
         const registerImage = form.get('image');
 
 
+        if (registerPassword.length < 6) {
+            toast.error("Please Provide at least 6 characters Password", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
+        else if (!/[A-Z]/.test(registerPassword)) {
+            toast.error("Sorry, Password must have at least one Capital Letter", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
+        else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(registerPassword)) {
+            toast.error("Sorry, Password must have at least one special character", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
+
+
 
         createUser(registerEmail, registerPassword)
             .then(res => {
                 console.log(res.user);
                 profileUpdate(registerName, registerImage)
+
+                toast.success('Successfully Registered!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
 
                 loggingOut()
                 .then(() => {
@@ -29,6 +82,16 @@ const Register = () => {
             })
             .catch(error => {
                 console.log(error);
+                toast.error(`${error}`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             })
     }
 
@@ -100,6 +163,21 @@ const Register = () => {
                 </div>
             </div>
 
+
+
+
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };

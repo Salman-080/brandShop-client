@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../../AuthProvider/Provider";
+
 
 const BrandCategories = () => {
     const [categories, setCategories] = useState([]);
-    const { theme } = useContext(AuthContext)
+   
     useEffect(() => {
         fetch('/brandCategories.json')
             .then(res => res.json())
@@ -17,7 +17,7 @@ const BrandCategories = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto mt-12 ">
-            <h2 className="text-center text-xl md:text-2xl lg:text-4xl">This is brand categories</h2>
+            <h2 className="text-center text-xl md:text-2xl lg:text-4xl font-bold text-orange-500">Browse by Brand Categories</h2>
             <br />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 ">

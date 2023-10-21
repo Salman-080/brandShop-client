@@ -11,7 +11,8 @@ const Header = () => {
 
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/addProduct">Add Product</NavLink></li>
-        <li><NavLink to={`/cart/${userEmail}`}>Cart</NavLink></li>
+        <li><NavLink to={"/cart"}>Cart</NavLink></li>
+        <li><NavLink to={"/login"}>Login</NavLink></li>
 
 
 
@@ -50,7 +51,11 @@ const Header = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <div className="flex gap-1">
+                    <img className="w-[30px] h-[30px]" src="/BrandBites.png" alt="" />
+                <h2 className="normal-case text-xl font-bold">BrandBites</h2>
+                </div>
+                
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 space-x-7">
@@ -73,27 +78,27 @@ const Header = () => {
                             }
                         </div>
                     </label>
-                    <ul tabIndex={0} className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-[200px] md:w-[300px] mr-2">
 
                         {
                             user ?
                                 <div className="space-y-6">
-                                    <p className="text-center text-lg font-semibold">Hi! {user?.displayName}</p>
-                                    <p className="text-center text-sm font-thin">{user?.email}</p>
+                                    <p className="text-center text-xl font-semibold "><span className="text-orange-400">Logged as </span> <br /> <span className="text-base"> {user?.displayName}</span></p>
+                                    <p className="text-center text-sm font-thin "><span className="text-base font-normal">Email:</span> <span className="text-sm"> {user?.email}</span></p>
 
                                     <hr />
                                     <div className="text-center">
-                                        <button onClick={handleLogOut} className="btn btn-neutral">Log Out</button>
+                                        <button onClick={handleLogOut} className="btn bg-orange-500 text-white w-full">Log Out</button>
                                     </div>
                                 </div>
                                 :
                                 <div className="space-y-6">
-                                    <Link to="/login"><li className="text-xl hover:bg-gray-500 hover:text-white hover:p-3 hover:rounded">Login</li></Link>
+                                    <Link to="/login"><li className="text-lg hover:bg-orange-300 hover:text-white hover:py-[6px] hover:px-2 hover:rounded text-orange-400 font-medium">Login</li></Link>
                                     <br />
-                                    <Link to="/register"> <li className="text-xl hover:bg-gray-500 hover:text-white hover:p-3 hover:rounded">Register</li></Link>
+                                    <Link to="/register"> <li className="text-lg hover:bg-orange-300 hover:text-white hover:py-[6px] hover:px-2 hover:rounded text-orange-400 font-medium">Register</li></Link>
                                     <hr />
                                     <div className=" text-center">
-                                        <button onClick={handleGoogleSignIn} className="bg-yellow-200 px-3 py-2  rounded-xl">Log In with Google</button>
+                                        <button onClick={handleGoogleSignIn} className="bg-orange-800 px-3 py-2 text-white rounded-xl font-semibold hover:bg-orange-300">Log In with Google</button>
                                     </div>
                                 </div>
 

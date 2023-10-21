@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
     const [brands,setBrands]=useState([]);
@@ -24,7 +25,7 @@ const AddProduct = () => {
             productName, brandName,productType,price,shortDescription,rating,image
         }
 
-        fetch('http://localhost:5000/products',{
+        fetch('https://brand-shop-server-ochre.vercel.app/products',{
             method:"POST",
             headers:{
                 "content-type":"application/json"
@@ -32,12 +33,23 @@ const AddProduct = () => {
             body: JSON.stringify(product)
         })
         .then(res=>res.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            console.log(data);
+            if(data.acknowledged){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Added Successfully',
+                    
+                  })
+            }
+
+        })
     }
     return (
         <div className="max-w-screen-xl mx-auto mt-12">
-            <form onSubmit={handleAddProduct} className="bg-gray-400 p-16 rounded-xl">
-                <div className="grid grid-cols-3 gap-7 ">
+            <form onSubmit={handleAddProduct} className="bg-orange-400 p-16 rounded-xl mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 ">
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productName" placeholder="Product Name" id="" />
                     <select name="brandName" className="select select-bordered w-full max-w-xs">
                     <option disabled selected>Brand Name</option>
@@ -49,7 +61,7 @@ const AddProduct = () => {
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="productType" placeholder="Type" id="" />
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="price" placeholder="Price" id="" />
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="shortDescription" placeholder="Short Description" id="" />
-                    <input className="input input-bordered input-md w-full max-w-xs" type="text" name="rating" placeholder="Rating" id="" />
+                    <input className="input input-bordered input-md w-full max-w-xs" type="number" name="rating" placeholder="Rating (Integer Number)" id="" />
                     <input className="input input-bordered input-md w-full max-w-xs" type="text" name="image" placeholder="Image Url" id="" />
 
 
@@ -57,7 +69,7 @@ const AddProduct = () => {
                 <br />
                 <br />
                 <div className="text-center">
-                <button className="btn btn-ghost">Add</button>
+                <button className="btn bg-orange-700 text-white border-orange-700">Add Product</button>
                 </div>
                 
 

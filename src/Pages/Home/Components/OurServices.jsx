@@ -7,8 +7,8 @@ const OurServices = () => {
     return (
         <div className={`${theme=="lightTheme"? "dark_theme": "light_theme "} px-12 mt-12  py-12`}>
             <div className="text-center space-y-5">
-                <h2 className="text-2xl md:text-4xl font-semibold">Our Services</h2>
-                <p className="text-gray-600">All of our services are currently accessible to you!</p>
+                <h2 className="text-2xl md:text-4xl font-semibold text-orange-500">Our Services</h2>
+                <p className=" text-orange-300 font-medium">All of our services are currently accessible to you!</p>
             </div>
 
             <div className="flex flex-col md:flex-row text-center mt-9 gap-8">
