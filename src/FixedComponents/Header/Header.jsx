@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthProvider/Provider";
 import './Header.css';
 
 const Header = () => {
-    const { user, loggingOut, handleTheme, theme } = useContext(AuthContext);
+    const { user, loggingOut, handleTheme, theme, googleSignIn } = useContext(AuthContext);
     const userEmail= user?.email;
 
     const navLinks = <>
@@ -28,8 +28,14 @@ const Header = () => {
     }
 
 
-    const handleGoogleLogin = () => {
-
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+        .then(res=>{
+            console.log(res.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
     }
 
 
@@ -87,7 +93,7 @@ const Header = () => {
                                     <Link to="/register"> <li className="text-xl hover:bg-gray-500 hover:text-white hover:p-3 hover:rounded">Register</li></Link>
                                     <hr />
                                     <div className=" text-center">
-                                        <button onClick={handleGoogleLogin} className="bg-yellow-200 px-3 py-2  rounded-xl">Log In with Google</button>
+                                        <button onClick={handleGoogleSignIn} className="bg-yellow-200 px-3 py-2  rounded-xl">Log In with Google</button>
                                     </div>
                                 </div>
 

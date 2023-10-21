@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/Provider";
 
 const BrandCategories = () => {
-    const [categories, setCategories]=useState([]);
-
-    useEffect(()=>{
+    const [categories, setCategories] = useState([]);
+    const { theme } = useContext(AuthContext)
+    useEffect(() => {
         fetch('/brandCategories.json')
-        .then(res=>res.json())
-        .then(data=>setCategories(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setCategories(data))
+    }, [])
     // console.log(categories);
 
 
@@ -18,25 +19,33 @@ const BrandCategories = () => {
         <div className="max-w-screen-xl mx-auto mt-12 ">
             <h2 className="text-center text-xl md:text-2xl lg:text-4xl">This is brand categories</h2>
             <br />
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 ">
-                
-                {
-                    categories.map((category, idx)=>
-                    
-                     <div key={idx} className=" relative lg:h-[250px] w-full rounded-xl hover:opacity-40">
-                        {/* <div className=" bg-opacity-50 absolute top-0 right-0 left-0 bottom-0"></div> */}
-                        <NavLink to={`/category/${category.brand_name}`}>
 
-                        <img className="h-full w-full rounded-xl" src={category.brand_image} alt="" />
-                        </NavLink>
-                    </div> 
-                   
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 ">
+
+                {
+                    categories.map((category, idx) =>
+
+                        <div key={idx} className="hover:opacity-50 relative h-[200px] md:h-[250px] w-full rounded-xl ">
+                            <NavLink to={`/category/${category.brand_name}`}>
+                                <div className=" bg-black bg-opacity-50 absolute top-0 right-0 left-0 bottom-0 rounded-xl">
+
+                                </div>
+
+
+
+
+                                <img className="h-full w-full rounded-xl" src={category.brand_image} alt="" />
+                                <div className="flex items-center justify-center inset-0 absolute text-white text-4xl font-bold">
+                                    <h2 className="">{category.brand_name}</h2>
+                                </div>
+                            </NavLink>
+                        </div>
+
                     )
                 }
-                
+
             </div>
-            
+
         </div>
     );
 };

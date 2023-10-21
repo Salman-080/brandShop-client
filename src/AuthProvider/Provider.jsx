@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup  } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 
@@ -10,18 +10,28 @@ const Provider = ({children}) => {
     const auth= getAuth(app);
     const [user, setUser]=useState(null);
     const [theme,setTheme]=useState("darkTheme");
+    const [loading,setLoaing]=useState(true);
+    const googleProvider = new GoogleAuthProvider();
 
     const createUser=(email,password)=>{
+        setLoaing(false);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const signIn=(email,password)=>{
+        setLoaing(false);
         return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const googleSignIn=()=>{
+        setLoaing(false);
+       return signInWithPopup(auth, googleProvider);
     }
 
     useEffect(()=>{
        const unsubscribe= onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setLoaing(false);
           });
 
         return ()=>{
@@ -45,6 +55,7 @@ const Provider = ({children}) => {
 
     }
     const loggingOut=()=>{
+        setLoaing(false);
         return signOut(auth);
     }
 
@@ -67,6 +78,8 @@ const Provider = ({children}) => {
         loggingOut,
         handleTheme,
         theme,
+        googleSignIn,
+        loading,
     }
 
 

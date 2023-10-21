@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/Provider";
 
 const Register = () => {
-    const { createUser,profileUpdate,loggingOut } = useContext(AuthContext);
+    const { createUser,profileUpdate,loggingOut, googleSignIn } = useContext(AuthContext);
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
@@ -33,8 +33,14 @@ const Register = () => {
     }
 
 
-    const handleGoogleLogin = () => {
-
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+        .then(res=>{
+            console.log(res.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
     }
     return (
         <div className="flex flex-col justify-center items-center min-h-screen ">
@@ -85,7 +91,7 @@ const Register = () => {
 
                     <div className="text-center mb-5 space-y-2">
                         <p className="text-gray-500">Or Sign in using</p>
-                        <button onClick={handleGoogleLogin} className="btn ">
+                        <button onClick={handleGoogleSignIn} className="btn ">
                             <img className="w-[20px] h-[20px] rounded-full" src="/google.png" alt="" />
                             <p>Google</p>
                         </button>

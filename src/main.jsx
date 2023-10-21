@@ -16,11 +16,17 @@ import UpdatePage from './Pages/UpdatePage/UpdatePage';
 import Provider from './AuthProvider/Provider';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import NoPage from './Pages/NoPage/NoPage';
+import CartPrivate from './PrivateRoute/CartPrivate';
+import AddProductPrivate from './PrivateRoute/AddProductPrivate';
+import ProductDetailsPrivate from './PrivateRoute/ProductDetailsPrivate';
+import UpdatePrivate from './PrivateRoute/UpdatePrivate';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <NoPage></NoPage>,
     children: [
       {
         path: "/",
@@ -33,22 +39,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/addProduct",
-        element: <AddProduct></AddProduct>
+        element: <AddProductPrivate> <AddProduct></AddProduct></AddProductPrivate>
       },
       {
         path: "/product/:productId",
-        element: <ProductsPage></ProductsPage>,
+        element: <ProductDetailsPrivate>
+           <ProductsPage></ProductsPage>
+        </ProductDetailsPrivate>,
         loader: ({ params }) => fetch(`http://localhost:5000/${params.productId}`)
 
       },
       {
         path: "/cart/:userEmail",
-        element: <Cart></Cart>,
+        element: <CartPrivate>
+          <Cart></Cart>
+        </CartPrivate> ,
         loader: ({params}) => fetch(`http://localhost:5000/product/cart/${params.userEmail}`)
       },
       {
         path: "/update/:id",
-        element: <UpdatePage></UpdatePage>,
+        element: <UpdatePrivate> <UpdatePage></UpdatePage></UpdatePrivate>,
         loader: ({ params }) => fetch(`http://localhost:5000/update/${params.id}`)
 
       },
