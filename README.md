@@ -1,8 +1,8 @@
 # Website Name
 BrandBites
 
-# 
-
+# Client-Side Live Link
+https://brandshop-auth.web.app/
 
 
 # About My Project
@@ -23,4 +23,4 @@ BrandBites
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- Also there is a darkmode, lightmode feature in the home page. User can toggle theme of the home page only.
+- Also there is a dark mode, ligth mode feature in the home page. User can toggle theme of the home page only.
